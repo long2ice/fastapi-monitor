@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "fastapi-monitor"
+version = "0.1.0"
+description = "A dashboard for automatic monitoring of fastapi."
+authors = ["long2ice <long2ice@gmail.com>"]
+license = "Apache-2.0"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.dev-dependencies]
+# test
+pytest = "*"
+pytest-asyncio = "*"
+pytest-mock = "*"
+pytest-xdist = "*"
+pytest-benchmark = "*"
+pytest-sugar = "*"
+# lint
+black = "*"
+flake8 = "*"
+isort = "*"
+mypy = "*"
+# dev
+devtools = { version = "*", extras = ['pygments'] }
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
