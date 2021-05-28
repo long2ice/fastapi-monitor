@@ -13,7 +13,7 @@ style: deps
 	black $(black_opts) $(checkfiles)
 
 check: deps
-	black --check $(black_opts) $(checkfiles) || (echo "Please run 'make style' to auto-fix style issues" && false)
+	black --check $(black_opts) $(checkfiles)
 	flake8 $(checkfiles)
 	mypy $(checkfiles)
 
@@ -21,3 +21,9 @@ test: deps
 	$(py_warn) pytest
 
 ci: check test
+
+build: deps
+	@poetry build
+
+build-web:
+	cd web && yarn build && cp -R dist/* ../fastapi_monitor/static/

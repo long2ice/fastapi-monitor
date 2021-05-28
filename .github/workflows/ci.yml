@@ -1,0 +1,16 @@
+name: ci
+on: [ push, pull_request ]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+      - name: Install and configure Poetry
+        uses: snok/install-poetry@v1.1.1
+        with:
+          virtualenvs-create: false
+      - name: Install requirements
+        run: make deps
+      - name: Run ci
+        run: make ci
