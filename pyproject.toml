@@ -11,6 +11,7 @@ fastapi = "*"
 tortoise-orm = "*"
 uvicorn = { version = "*", extras = ["standard"] }
 aiofiles = "*"
+jinja2 = "*"
 
 [tool.poetry.dev-dependencies]
 # test
