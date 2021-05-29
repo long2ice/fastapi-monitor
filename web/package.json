@@ -1,20 +1,15 @@
 {
   "name": "fastapi-monitor",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview"
+    "dev": "next dev",
+    "build": "next build && next export",
+    "start": "next start"
   },
   "dependencies": {
-    "vue": "^3.0.5"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^1.2.2",
-    "@vue/compiler-sfc": "^3.0.5",
-    "autoprefixer": "^10.2.6",
-    "postcss": "^8.3.0",
-    "tailwindcss": "^2.1.2",
-    "vite": "^2.3.4"
+    "next": "10.2.3",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   }
 }

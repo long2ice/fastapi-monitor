@@ -26,4 +26,4 @@ build: deps
 	@poetry build
 
 build-web:
-	cd web && npm run build && rm -rf ../fastapi_monitor/static/* && cp -R dist/* ../fastapi_monitor/static/
+	cd web && yarn build && rm -rf ../fastapi_monitor/static/* && cp -R out/ ../fastapi_monitor/web/
