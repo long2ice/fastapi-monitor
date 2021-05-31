@@ -28,6 +28,7 @@ isort = "*"
 mypy = "*"
 # dev
 devtools = { version = "*", extras = ['pygments'] }
+asyncmy = "*"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

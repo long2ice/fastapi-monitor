@@ -1,4 +1,4 @@
-checkfiles = fastapi_monitor/ tests/ conftest.py
+checkfiles = fastapi_monitor/ tests/ examples/ conftest.py
 black_opts = -l 100 -t py38
 py_warn = PYTHONDEVMODE=1
 
@@ -24,6 +24,3 @@ ci: check test
 
 build: deps
 	@poetry build
-
-build-web:
-	cd web && yarn build && rm -rf ../fastapi_monitor/static/* && cp -R out/ ../fastapi_monitor/web/
