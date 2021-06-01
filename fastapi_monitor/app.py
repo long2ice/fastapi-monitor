@@ -33,6 +33,7 @@ class FastAPIMonitor(FastAPI):
     ):
         """
         Configure FastAPIMonitor
+        :param path: mount path
         :param max_seconds: Log create max seconds
         :param bulk_size: async bulk_size to create log
         :param main_app:

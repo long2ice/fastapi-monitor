@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 from starlette.requests import Request
 
+from fastapi_monitor.models import Log
 from fastapi_monitor.template import templates
 
 router = APIRouter()
@@ -13,4 +14,5 @@ async def monitor(request: Request):
 
 @router.get("/logs")
 async def logs(request: Request):
-    return {"hello": "world"}
+    data = await Log.all()
+    return templates.TemplateResponse("index.html", context={"request": request, 'logs': data})
