@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+{% block head %}
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
+{% endblock %}
+{% block content %}
+    <div class="card">
+        <div class="table-responsive">
+            <table id="table">
+            </table>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+    <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
+    <script>
+        $('#table').bootstrapTable({
+            url: 'logs/data',
+            classes: 'table table-vcenter text-nowrap datatable',
+            pagination: true,
+            sidePagination: 'server',
+            multipleSelectRow: true,
+            pageSize: 1,
+            paginationDetailHAlign: 'right',
+            paginationHAlign: 'left',
+            columns: [{
+                field: 'state',
+                checkbox: true,
+            }, {
+                field: 'id',
+                title: 'ID'
+            }, {
+                field: 'method',
+                title: 'Method'
+            }, {
+                field: 'path',
+                title: 'Path'
+            }, {
+                field: 'status_code',
+                title: 'Status Code'
+            }, {
+                field: 'time',
+                title: 'Time'
+            }, {
+                field: 'created_at',
+                title: 'Created At'
+            }]
+        })
+    </script>
+{% endblock %}
