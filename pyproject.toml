@@ -19,7 +19,6 @@ pytest = "*"
 pytest-asyncio = "*"
 pytest-mock = "*"
 pytest-xdist = "*"
-pytest-benchmark = "*"
 pytest-sugar = "*"
 # lint
 black = "*"

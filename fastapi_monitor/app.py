@@ -12,6 +12,7 @@ class FastAPIMonitor(FastAPI):
     max_seconds: int = 60
     queue: asyncio.Queue
     logs: List[Log] = []
+    lock: asyncio.Lock
 
     async def put_log(self, log: Log):
         await self.queue.put(log)
@@ -24,9 +25,10 @@ class FastAPIMonitor(FastAPI):
                 self.logs.append(log)
             except asyncio.TimeoutError:
                 timeout = True
-            if len(self.logs) == self.bulk_size or (self.logs and timeout):
-                await Log.bulk_create(self.logs)
-                self.logs = []
+            async with self.lock:
+                if len(self.logs) == self.bulk_size or (self.logs and timeout):
+                    await Log.bulk_create(self.logs)
+                    self.logs = []
 
     def configure(
         self, main_app: FastAPI, path: str = "/monitor", bulk_size: int = 10, max_seconds: int = 60
@@ -42,7 +44,8 @@ class FastAPIMonitor(FastAPI):
         self.bulk_size = bulk_size
         self.max_seconds = max_seconds
         self.queue = asyncio.Queue()
-        main_app.mount(f"{path}", self)
+        self.lock = asyncio.Lock()
+        main_app.mount(path, self)
 
         @main_app.on_event("startup")
         async def startup():

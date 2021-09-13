@@ -7,3 +7,7 @@ class Log(Model):
     time = fields.FloatField()
     status_code = fields.IntField()
     created_at = fields.DatetimeField(auto_now_add=True)
+
+    class Meta:
+        indexes = [("created_at", "path", "method", "status_code")]
+        ordering = ["-id"]
