@@ -1,5 +1,5 @@
 from starlette.requests import Request
 
 
-async def monitoring(request: Request):
+async def enable_monitor(request: Request):
     request.state.monitor = True

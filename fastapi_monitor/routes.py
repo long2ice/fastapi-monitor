@@ -5,7 +5,7 @@ from fastapi import APIRouter
 from pydantic import PositiveInt
 from tortoise import timezone
 
-from fastapi_monitor.models import Log
+from fastapi_monitor.models import RequestLog
 
 router = APIRouter()
 
@@ -22,7 +22,7 @@ async def logs_data(
 ):
     limit = size
     offset = (page - 1) * size
-    qs = Log.all()
+    qs = RequestLog.all()
     if path:
         qs = qs.filter(path=path)
     if status_code:

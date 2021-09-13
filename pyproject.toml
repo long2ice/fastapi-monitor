@@ -12,6 +12,7 @@ tortoise-orm = "*"
 uvicorn = { version = "*", extras = ["standard"] }
 aiofiles = "*"
 jinja2 = "*"
+aiosmtplib = "*"
 
 [tool.poetry.dev-dependencies]
 # test

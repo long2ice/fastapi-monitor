@@ -20,7 +20,7 @@ check: deps
 test: deps
 	$(py_warn) pytest
 
-ci: check test
+ci: check
 
 build: deps
 	@poetry build
